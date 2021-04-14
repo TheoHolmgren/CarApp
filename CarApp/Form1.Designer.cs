@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lsvCars = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRegNr = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -43,23 +43,24 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listView1
+            // lsvCars
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lsvCars.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.regnr,
             this.make,
             this.forsale});
-            this.listView1.Location = new System.Drawing.Point(23, 155);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(839, 343);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lsvCars.Location = new System.Drawing.Point(23, 155);
+            this.lsvCars.Name = "lsvCars";
+            this.lsvCars.Size = new System.Drawing.Size(839, 343);
+            this.lsvCars.TabIndex = 0;
+            this.lsvCars.UseCompatibleStateImageBehavior = false;
+            this.lsvCars.View = System.Windows.Forms.View.Details;
+            this.lsvCars.SelectedIndexChanged += new System.EventHandler(this.lsvCars_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -72,19 +73,19 @@
             this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtRegNr);
             this.groupBox1.Location = new System.Drawing.Point(23, 16);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(839, 124);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // textBox1
+            // txtRegNr
             // 
-            this.textBox1.Location = new System.Drawing.Point(100, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(175, 26);
-            this.textBox1.TabIndex = 0;
+            this.txtRegNr.Location = new System.Drawing.Point(100, 25);
+            this.txtRegNr.Name = "txtRegNr";
+            this.txtRegNr.Size = new System.Drawing.Size(175, 26);
+            this.txtRegNr.TabIndex = 0;
             // 
             // textBox2
             // 
@@ -178,14 +179,15 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnClear
             // 
-            this.button2.Location = new System.Drawing.Point(23, 504);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(184, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Rensa bort all data";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnClear.Location = new System.Drawing.Point(23, 504);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(184, 30);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "Rensa bort all data";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnRemove
             // 
@@ -203,9 +205,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 546);
             this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lsvCars);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
@@ -216,7 +218,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lsvCars;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ColumnHeader regnr;
         private System.Windows.Forms.ColumnHeader make;
@@ -229,9 +231,9 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRegNr;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnRemove;
     }
 }
