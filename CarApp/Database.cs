@@ -39,6 +39,37 @@ namespace CarApp
 
         }
 
+        //Om dbConn inte är stängd så stäng dbConn
+
+        public void CloseConnection()
+        {
+            if (dbConn.State != System.Data.ConnectionState.Closed)
+            {
+                dbConn.Close();
+            }
+        }
+
+        public int AddCarRow(Car car)
+        {
+            string qInsert = "INSERT INTO car ('regNr','make','model','year','forSale') VALUES (@regNr, @make, @model, @year, @forSale);";
+
+            SQLiteCommand dbCommand = new SQLiteCommand(qInsert, dbConn);
+            OpenConnection();
+
+            //koppla parametrar
+            dbCommand.Parameters.AddWithValue(@"regNr", car.GetRegNr());
+            dbCommand.Parameters.AddWithValue(@"make", car.GetMake());
+            dbCommand.Parameters.AddWithValue(@"model", car.GetModel());
+            dbCommand.Parameters.AddWithValue(@"year", car.GetYear());
+
+            dbCommand.Parameters.AddWithValue(@"forSale", (car.GetForSale() ? 1 : 0));
+
+            //Svaret är hur många rader som påverkas av "frågan" jag ställer (Skulle kunna vara flera om det är flera som läggs till eller tas bort)
+            int result = dbCommand.ExecuteNonQuery();
+            CloseConnection();
+            return result;
+        }
+
 
     }
 }
