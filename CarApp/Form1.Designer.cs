@@ -45,6 +45,9 @@
             this.txtRegNr = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.model = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.year = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,10 +56,12 @@
             this.lsvCars.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.regnr,
             this.make,
+            this.model,
+            this.year,
             this.forsale});
-            this.lsvCars.Location = new System.Drawing.Point(23, 155);
+            this.lsvCars.Location = new System.Drawing.Point(23, 196);
             this.lsvCars.Name = "lsvCars";
-            this.lsvCars.Size = new System.Drawing.Size(839, 343);
+            this.lsvCars.Size = new System.Drawing.Size(853, 302);
             this.lsvCars.TabIndex = 0;
             this.lsvCars.UseCompatibleStateImageBehavior = false;
             this.lsvCars.View = System.Windows.Forms.View.Details;
@@ -79,6 +84,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.cbxForSale);
             this.groupBox1.Controls.Add(this.label4);
@@ -91,7 +97,7 @@
             this.groupBox1.Controls.Add(this.txtRegNr);
             this.groupBox1.Location = new System.Drawing.Point(23, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(839, 124);
+            this.groupBox1.Size = new System.Drawing.Size(839, 159);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -199,6 +205,24 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(100, 118);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(175, 35);
+            this.btnSearch.TabIndex = 10;
+            this.btnSearch.Text = "Sök i biluppgifter.se";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // model
+            // 
+            this.model.Text = "Model";
+            // 
+            // year
+            // 
+            this.year.Text = "Year";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -235,6 +259,9 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ColumnHeader model;
+        private System.Windows.Forms.ColumnHeader year;
     }
 }
 

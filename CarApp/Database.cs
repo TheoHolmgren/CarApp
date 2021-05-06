@@ -68,6 +68,59 @@ namespace CarApp
             int result = dbCommand.ExecuteNonQuery();
             CloseConnection();
             return result;
+
+        }
+        public List<Car> GetRowsFromCars()
+        {
+            List<Car> listOfCars = new List<Car>();
+            string qSelect = "SELECT * FROM car;";
+
+            SQLiteCommand dbCommand = new SQLiteCommand(qSelect, dbConn);
+            OpenConnection();
+            SQLiteDataReader res = dbCommand.ExecuteReader(); //Ett resultset är en tvådimensionell array med värden
+            if (res.HasRows)
+            {
+                while( res.Read()) //Hämta nästa rad (post i tabellen)
+                {
+                    Car car = new Car(Convert.ToString(res["regNr"]),
+                        Convert.ToString(res["make"]),
+                        Convert.ToString(res["model"]),
+                        Convert.ToInt32(res["year"]),
+                        Convert.ToBoolean(res["forSale"]));
+                    listOfCars.Add(car);
+                }
+            }
+            CloseConnection();
+            return listOfCars;
+        }
+        
+        internal int RemoveCarRowByRegNr(string regNr)
+        {
+            string qDelete = "DELETE FROM car WHERE regNr = @regNr;";
+
+            SQLiteCommand dbCommand = new SQLiteCommand(qDelete, dbConn);
+            OpenConnection();
+
+            //koppla parametrar
+            dbCommand.Parameters.AddWithValue(@"regNr", regNr);
+
+            //Svaret är hur många rader som påverkas av "frågan" jag ställer (Skulle kunna vara flera om det är flera som läggs till eller tas bort)
+            int result = dbCommand.ExecuteNonQuery();
+            CloseConnection();
+            return result;
+        }
+
+        public int RemoveAllCars()
+        {
+            string qDelete = "DELETE FROM car;";
+
+            SQLiteCommand dbCommand = new SQLiteCommand(qDelete, dbConn);
+            OpenConnection();
+
+            //Svaret är hur många rader som påverkas av "frågan" jag ställer (Skulle kunna vara flera om det är flera som läggs till eller tas bort)
+            int result = dbCommand.ExecuteNonQuery();
+            CloseConnection();
+            return result;
         }
 
 
